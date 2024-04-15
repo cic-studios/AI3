@@ -967,7 +967,7 @@ function TaskdataToHtmlCards(taskDataTable, outputDivContainerColumns=null)
         taskInfoPanelDiv.id = `htmlTaskInfoPanel${rowIndex}`;
         taskInfoPanelDiv.className = 'flexRow flexStart crossStretch crossCenter selfCrossStretch';
         taskInfoPanelDiv.style.borderStyle = 'hidden hidden solid hidden';
-        taskInfoPanelDiv.style.borderWidth = '0px 0px 3px 0px';
+        taskInfoPanelDiv.style.borderWidth = '0px 0px 1px 0px';
         taskMainDiv.append(taskInfoPanelDiv);
         {
             const taskNumDiv = document.createElement('div');
@@ -980,7 +980,7 @@ function TaskdataToHtmlCards(taskDataTable, outputDivContainerColumns=null)
             taskNumDiv.style.minHeight = '30px';
             taskNumDiv.style.minWidth = '30px';
             taskNumDiv.style.borderStyle = 'hidden solid hidden hidden';
-            taskNumDiv.style.borderWidth = '0px 3px 0px 0px';
+            taskNumDiv.style.borderWidth = '0px 1px 0px 0px';
             taskNumDiv.textContent = taskDataTable.rows[rowIndex].TaskNum;
             taskInfoPanelDiv.append(taskNumDiv);
             const taskDetailsDiv = document.createElement('div');
@@ -1067,6 +1067,7 @@ function TaskdataToHtmlCards(taskDataTable, outputDivContainerColumns=null)
         taskStatusPanelDiv.id = `htmlTaskStatusPanel${rowIndex}`;
         taskStatusPanelDiv.className = 'flexRow flexEvenly crossStretch crossCenter selfCrossStretch';
         taskStatusPanelDiv.style.borderStyle = 'solid hidden hidden hidden';
+        taskStatusPanelDiv.style.borderWidth = '1px 0px 0px 0px';
         taskMainDiv.append(taskStatusPanelDiv);
         {
             const taskDayStartDiv = document.createElement('div');
