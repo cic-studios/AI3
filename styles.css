@@ -58,7 +58,7 @@
 {
     --mbaLogoGold:#FFA800;
     --mbaYeetYellow:#FFD508;
-    --mbaTextDarkPurple:#211741;
+    --mbaDarkPurple:#211741;
     --mbaLogoPurple:#211A58;
     --mbaInputIndigo:#6F64AB;
     --mbaBackBright:#F1EFF9;
@@ -84,7 +84,7 @@
 ::placeholder
 {
     font-style:italic; 
-    color: var(--mbaTextDarkPurple);
+    color: var(--mbaDarkPurple);
     /*background: var(--mbaTextDarkPurple);
     background-color: var(--mbaInputIndigo);*/
 }
@@ -118,8 +118,9 @@ body
 
 .cicBackground
 {
-    background-color: var(--cicBackDark);
-    background-image: url('Background.png');
+    background-color: var(--mbaInputIndigo);
+    /*background-color: var(--cicBackDark);
+    background-image: url('Background.png');*/
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -168,11 +169,14 @@ body
 .mbaBox
 {
     border-style: solid;
-    border-width: 3px;
+    border-width: 2px;
     border-radius: 5px;
-    border-color: var(--mbaLogoGold);
-    background-color: var(--mbaLogoPurple);
-    color: var(--mbaLogoGold);
+    /*border-color: var(--mbaLogoGold);*/
+    border-color: var(--mbaBackBright);
+    /*background-color: var(--mbaLogoPurple);*/
+    background-color: var(--mbaDarkPurple);
+    /*color: var(--mbaLogoGold);*/
+    color: var(--mbaBackBright);
 }
 .mbaBox:hover
 {
@@ -181,7 +185,7 @@ body
 
 .mbaTitle
 {
-    color: var(--mbaLogoGold);
+    color: var(--mbaBackBright);
     font-weight: bold;
     font-size: large;
     padding: 5px;
@@ -194,9 +198,9 @@ body
     border-style: solid solid hidden solid;
     border-width: 2px 2px 0px 2px;
     border-radius: 5px 5px 0px 0px;
-    border-color: var(--mbaLogoGold);
+    border-color: var(--mbaBackBright);
     background-color: var(--mbaLogoPurple);
-    color: var(--mbaLogoGold);
+    color: var(--mbaBackBright);
     padding:5px;
 }
 .mbaTab:hover
@@ -214,7 +218,7 @@ body
     border-width: 1px;
     border-radius: 10px;
     border-color: var(--mbaLogoGold);
-    background-color: var(--mbaTextDarkPurple);
+    background-color: var(--mbaDarkPurple);
     color: var(--mbaLogoGold);
     padding:5px;
 }
@@ -236,7 +240,7 @@ body
 .mbaInput
 {
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     border-radius: 1px;
     border-color: var(--mbaLogoGold);
     /*background-color: var(--mbaInputIndigo);
@@ -275,16 +279,17 @@ body
 .mbaTableCell-title
 {
     border-style: hidden hidden solid hidden;
-    border-width: 0px 0px 3px 0px;
-    border-color: var(--mbaLogoGold);
+    border-width: 0px 0px 2px 0px;
+    border-color: var(--mbaBackBright);
     background-color: var(--mbaLogoPurple);
-    color: var(--mbaLogoGold);
+    /*color: var(--mbaLogoGold);*/
+    color: var(--mbaBackBright);
 }
 .mbaTableCell
 {
-    border-color: var(--mbaLogoGold);
-    background-color: var(--mbaLogoPurple);
-    color: var(--mbaLogoGold);
+    border-color: var(--mbaBackBright);
+    background-color: var(--mbaDarkPurple);
+    color: var(--mbaBackBright);
 }
 .mbaTableCell-headerNrml
 {
