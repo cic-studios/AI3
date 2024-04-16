@@ -118,7 +118,8 @@ body
 
 .cicBackground
 {
-    background-color: var(--mbaInputIndigo);
+    /*background-color: var(--mbaInputIndigo);*/
+    background-color: var(--mbaBackBright);
     /*background-color: var(--cicBackDark);
     background-image: url('Background.png');*/
     background-repeat: no-repeat;
@@ -172,7 +173,7 @@ body
     border-width: 2px;
     border-radius: 5px;
     /*border-color: var(--mbaLogoGold);*/
-    border-color: var(--mbaBackBright);
+    border-color: var(--mbaInputIndigo);
     /*background-color: var(--mbaLogoPurple);*/
     background-color: var(--mbaDarkPurple);
     /*color: var(--mbaLogoGold);*/
@@ -240,7 +241,7 @@ body
 .mbaInput
 {
     border-style: solid;
-    border-width: 2px;
+    border-width: 1px;
     border-radius: 1px;
     border-color: var(--mbaLogoGold);
     /*background-color: var(--mbaInputIndigo);
