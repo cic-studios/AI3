@@ -1,10 +1,12 @@
-.debug1{ border: 1px solid red; color:red; background-color:black; opacity:1; }
-.debug2{ border: 1px solid lime; color:lime; background-color:black; opacity:1; }
-.debug3{ border: 1px solid dodgerblue; color:dodgerblue; background-color:black; opacity:1; }
-.debug4{ border: 1px solid cyan; color:cyan; background-color:black; opacity:1; }
-.debug5{ border: 1px solid magenta; color:magenta; background-color:black; opacity:1; }
-.debug6{ border: 1px solid yellow; color:yellow; background-color:black; opacity:1; }
+/*    *{outline: 2px solid orangered;}*/
+.debug1{ outline: 1px solid red; color:red; background-color:black; opacity:1; }
+.debug2{ outline: 1px solid lime; color:lime; background-color:black; opacity:1; }
+.debug3{ outline: 1px solid dodgerblue; color:dodgerblue; background-color:black; opacity:1; }
+.debug4{ outline: 1px solid cyan; color:cyan; background-color:black; opacity:1; }
+.debug5{ outline: 1px solid magenta; color:magenta; background-color:black; opacity:1; }
+.debug6{ outline: 1px solid yellow; color:yellow; background-color:black; opacity:1; }
 
+.flexHide{ display:none; }
 .flexRow{ display:flex; flex-direction:row; }
 .flexCol{ display:flex; flex-direction:column; }
 .flexStart{ justify-content:flex-start; }
@@ -36,8 +38,14 @@
 .flowNormal{ align-content:normal; }
 
 .selfFlexGrow{ flex:1; } /*flex-grow:1; flex-shrink:1; flex-basis: 0%;*/
-.selfFlexShrink{ flex-shrink:0; }
-.selfFlexNoGrow{ flex:0 1 auto; } /* DEFAULT! flex-grow:0 flex-shrink:1 flex-basis:auto*/
+.selfFlexGrow2{ flex:2; }
+.selfFlexGrow3{ flex:3; }
+.selfFlexNoGrow{ flex:0; } /*  1 auto; } /* DEFAULT! flex-grow:0 flex-shrink:1 flex-basis:auto*/
+.selfFlexShrink{ flex-shrink:1; }
+.selfFlexShrink2{ flex-shrink:2; }
+.selfFlexShrink3{ flex-shrink:3; }
+.selfFlexNoShrink{ flex-shrink:0; }
+
 .selfCrossStretch{ align-self:stretch; }
 .selfCrossStart{ align-self:flex-start; }
 .selfCrossCenter{ align-self:center; }
@@ -81,6 +89,17 @@
     --color-effectblue: #0885cf;
 }
 
+.textOultineBlack{ text-shadow: 1px 1px 0px black, 1px -1px 0px black, -1px 1px 0px black, -1px -1px 0px black; }
+.textOutlineWhite{ text-shadow: 1px 1px 0px white, 1px -1px 0px white, -1px 1px 0px white, -1px -1px 0px white; }
+.textOutlineGold{ text-shadow: 2px 2px 0px #FFA800, 2px -2px 0px #FFA800, -2px 2px 0px #FFA800, -2px -2px 0px #FFA800; }
+
+.centerDiv
+{ 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); }
+
 ::placeholder
 {
     font-style:italic; 
@@ -121,7 +140,7 @@ body
     /*background-color: var(--mbaInputIndigo);*/
     background-color: var(--mbaBackBright);
     /*background-color: var(--cicBackDark);
-    background-image: url('Background.png');*/
+    background-image: url('Images/CIC_Background.png');*/
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -172,11 +191,9 @@ body
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
-    /*border-color: var(--mbaLogoGold);*/
     border-color: var(--mbaInputIndigo);
-    /*background-color: var(--mbaLogoPurple);*/
+    /*border-color: var(--mbaLogoGold);*/
     background-color: var(--mbaDarkPurple);
-    /*color: var(--mbaLogoGold);*/
     color: var(--mbaBackBright);
 }
 .mbaBox:hover
@@ -220,6 +237,7 @@ body
     border-radius: 10px;
     border-color: var(--mbaLogoGold);
     background-color: var(--mbaDarkPurple);
+    /*background-color: var(--mbaLogoPurple);*/
     color: var(--mbaLogoGold);
     padding:5px;
 }
@@ -227,6 +245,15 @@ body
 {
     box-shadow: 0px 0px 8px 0px var(--mbaYeetYellow);
     text-shadow: 0px 0px 8px var(--mbaYeetYellow);
+}
+.mbaDayArrow
+{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border: none;
+    background-image: url('./Icons/arrowRight.png');
 }
 .mbaIcon
 {
@@ -295,7 +322,7 @@ body
 .mbaTableCell-headerNrml
 {
     border-style: hidden solid solid hidden;
-    border-width: 0px 3px 3px 0px;
+    border-width: 0px 1px 3px 0px;
 }
 .mbaTableCell-headerRight
 {

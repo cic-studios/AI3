@@ -10,166 +10,205 @@
     <body class="cicBackground flexCol flexBetween crossStretch">
         <div id="mainHeaderDiv" class="mbaBanner" style="text-align:center; border-bottom: 1px solid; position:sticky; top:0;">
             <!--<div id="headerTitleDiv" class="cicBannerTitle">MBA 3.0</div>-->
-            <img src="MBA_30_Logo_Banner.png" height="25px" />
+            <img src="Images/MBA_30_Logo_Banner.png" height="25px" />
         </div>
 
         <div id="mainContentDiv" class="selfFlexGrow flexCol flexStart crossCenter pad10 gap10">
 
-            <div id="creationMainDiv" class="flexRow flexCenter flowWrap pad5 gap10" style="overflow:auto;">
+            <div id="LOGIN_MainDiv" class="selfFlexGrow flexCol flexCenter flowWrap pad5 gap10">
+                <div class="selfFlexGrow"></div>
+                <div id="loginOldUserDiv" class="mbaBox flexCol flexBetween crossStretch pad5">
+                    <div class = "mbaTitle" style="text-align: center;">Login</div>
+                    <form id="loginOldUserForm" class="flexCol" style="gap:2px">
+                        <div class="flexRow flexBetween">
+                            <label for="oldUserLoginInput" class="mbaInputLabel">Login:</label>
+                            <input id="oldUserLoginInput" name="userLogin" type="text" required class="mbaInput">
+                        </div>
+                        <div class="flexRow flexBetween">
+                            <label for="oldUserPasswordInput" class="mbaInputLabel">Password:</label>
+                            <input id="oldUserPasswordInput" name="userPassword" type="password" class="mbaInput">
+                        </div>
+                        <button type="submit" class="mbaButton selfCrossCenter" onclick="event.preventDefault(); cicServerRPC_LoginOldUser(this.form);">Login</button>
+                    </form>
+                </div> <!-- loginUserDiv END -->
 
                 <div id="createUserDiv" class="mbaBox flexCol flexBetween crossStretch pad5">
-                    <div class = "mbaTitle" style="text-align: center;">Create User</div>
-                    <form id="createUserForm" class="flexCol" style="gap:2px">
+                    <div class = "mbaTitle" style="text-align: center;">New User</div>
+                    <form id="loginNewUserForm" class="flexCol" style="gap:2px">
                         <div class="flexRow flexBetween">
-                            <label for="userLoginInput" class="mbaInputLabel">Login:</label>
-                            <input id="userLoginInput" name="userLogin" type="text" required class="mbaInput">
+                            <label for="newUserLoginInput" class="mbaInputLabel">Login:</label>
+                            <input id="newUserLoginInput" name="userLogin" type="text" required class="mbaInput">
                         </div>
                         <div class="flexRow flexBetween">
-                            <label for="userPasswordInput" class="mbaInputLabel">Password:</label>
-                            <input id="userPasswordInput" name="userPassword" type="password" class="mbaInput">
+                            <label for="newUserPasswordInput" class="mbaInputLabel">Password:</label>
+                            <input id="newUserPasswordInput" name="userPassword" type="password" class="mbaInput">
                         </div>
                         <div class="flexRow flexBetween">
-                            <label for="userNameInput" class="mbaInputLabel">Full Name:</label>
-                            <input id="userNameInput" name="userName" type="text" class="mbaInput" autocomplete="on">
+                            <label for="newUserNameInput" class="mbaInputLabel">Full Name:</label>
+                            <input id="newUserNameInput" name="userName" type="text" class="mbaInput" autocomplete="on">
                         </div>
                         <div class="flexRow flexBetween">
-                            <label for="userEmailInput" class="mbaInputLabel">Email:</label>
-                            <input id="userEmailInput" name="userEmail" type="email" class="mbaInput">
+                            <label for="newUserEmailInput" class="mbaInputLabel">Email:</label>
+                            <input id="newUserEmailInput" name="userEmail" type="email" class="mbaInput">
                         </div>
                         <div class="flexRow flexBetween">
-                            <label for="userConfirmationInput" class="mbaInputLabel">Confirm Password:</label>
-                            <input id="userConfirmationInput" name="userConfirmation" type="password" class="mbaInput">
+                            <label for="newUserConfirmationInput" class="mbaInputLabel">Confirm Password:</label>
+                            <input id="newUserConfirmationInput" name="userConfirmation" type="password" class="mbaInput">
                         </div>
-                        <button type="submit" class = "mbaButton selfCrossCenter" onclick="event.preventDefault(); CreateNewUserPost(this.form);">Create User</button>
+                        <button type="submit" class = "mbaButton selfCrossCenter" onclick="event.preventDefault(); cicServerRPC_LoginNewUser(this.form);">Create User</button>
                     </form> 
                 </div> <!-- createUserDiv END -->
+                <div class="selfFlexGrow"></div>
+            </div> <!-- LOGIN_MainDiv END -->
 
-                <div id="createSessionDiv" class = "mbaBox flexCol flexBetween crossStretch pad5">
-                    <div class = "mbaTitle" style="text-align: center;">Create Session</div>
-                    <form id="createSessionForm" class="flexCol" style="gap:2px">
-                        <div class="flexRow flexBetween">
-                            <label for="sessionNameInput" class="mbaInputLabel">Title:</label>
-                            <input id="sessionNameInput" name="sessionName" type="text" class="mbaInput">
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="sessionPasswordInput" class="mbaInputLabel">Password:</label>
-                            <input id="sessionPasswordInput" name="sessionPassword" type="password" class="mbaInput">
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="sessionDateTimeInput" class="mbaInputLabel">Date & Time:</label>
-                            <input id="sessionDateTimeInput" name="sessionDateTime" type="datetime-local" class="mbaInput">
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="sessionColumnsInput" class="mbaInputLabel">Columns:</label>
-                            <input id="sessionColumnsInput" name="sessionColumns" type="text" placeholder="Queue,Doing:0,Testing:0,Done" class="mbaInput">
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="sessionConfirmationInput" class="mbaInputLabel">Confirm Password:</label>
-                            <input id="sessionConfirmationInput" name="sessionConfirmation" type="password" class="mbaInput">
-                        </div>
-                        <button type="submit" class = "mbaButton selfCrossCenter" onclick="event.preventDefault(); CreateNewSessionPost(this.form);">Create Session</button>
-                    </form>
-                </div> <!-- createSessionDiv END -->
+            <div id="SUBSCRIPTIONS_MainDiv" class="selfFlexGrow selfCrossStretch flexCol flexCenter crossCenter flowWrap pad5 gap10">
                 
-                <div id="createTaskDiv" class="mbaBox flexCol flexBetween crossStretch pad5">
-                    <div class = "mbaTitle" style="text-align: center;">Create Task</div>
-                    <form id="createTaskForm" class="flexCol" style="gap:2px">
-                        <div class="flexRow flexBetween">
-                            <label for="taskNameInput" class="mbaInputLabel">Task Name:</label>
-                            <input id="taskNameInput" name="taskName" type="text" class="mbaInput" >
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="taskDescriptionInput" class="mbaInputLabel">Task Description:</label>
-                            <input id="taskDescriptionInput" name="taskDescription" type="text"  class="mbaInput">
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="taskSessionNameInput" class="mbaInputLabel">Session Name:</label>
-                            <input id="taskSessionNameInput" name="taskSessionName" type="text"  required class="mbaInput">
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="taskSessionPasswordInput" class="mbaInputLabel">Session Password:</label>
-                            <input id="taskSessionPasswordInput" name="taskSessionPassword" type="password"  class="mbaInput">
-                        </div>
-                        <button type="submit" class = "mbaButton selfCrossCenter" onclick="event.preventDefault(); CreateNewTaskPost(this.form);">Insert Custom Task</button>
-                    </form>
-                </div> <!-- createTaskDiv END -->
-
-                <div id="autoTaskDiv" class="mbaBox flexCol flexBetween crossStretch pad5">
-                    <div class = "mbaTitle" style="text-align: center;">Auto Tasks</div>
-                    <form id="autoTaskForm" class="flexCol" style="gap:2px">
-                        <div class="flexRow flexBetween">
-                            <label for="autotaskTemplateInput" class="mbaInputLabel">Task Template:</label>
-                            <input id="autotaskTemplateInput" name="autotaskTemplate" type="text" class="mbaInput" >
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="autotaskQuantityInput" class="mbaInputLabel">Task Quantity:</label>
-                            <input id="autotaskQuantityInput" name="autotaskQuantity" type="number"  class="mbaInput" min="1" max="20" value="5" placeholder="Count">
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="autotaskSessionNameInput" class="mbaInputLabel">Session Name:</label>
-                            <input id="autotaskSessionNameInput" name="autotaskSessionName" type="text"  required class="mbaInput">
-                        </div>
-                        <div class="flexRow flexBetween">
-                            <label for="autotaskSessionPasswordInput" class="mbaInputLabel">Session Password:</label>
-                            <input id="autotaskSessionPasswordInput" name="autotaskSessionPassword" type="password"  class="mbaInput">
-                        </div>
-                        <button type="submit" class = "mbaButton selfCrossCenter" onclick="event.preventDefault(); CreateAutoTasksPost(this.form);">Insert Auto Tasks</button>
-                    </form>
-                </div> <!-- createTaskDiv END -->
-
-            </div> <!-- creationMainDiv END -->
-
-            <div id="editMainDiv" class="flexCol flexStart crossStretch">
-                <div id="edittablesCenteredStrechDiv" class="flexCol flexStart crossStretch gap10">
-
-                    <div id="htmlRowContainerDiv" class="mbaBox mbaRowContainer" style="display:none;">
-                        <!--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here--Row Here-->
+                <div id="profileMainDiv" class="mbaBox flexRow flexBetween crossStretch" style="width:95vw;">
+                    <div id= "profileNameDiv" class = "mbaTitle" style="padding-left:10px; text-align:center;">Welcome!</div>
+                    <div class="flexRow flexBetween crossStretch gap10" style="padding-right:5px;">
+                        <div id= "profileAccountDiv" class = "mbaTitle" style="text-align:center;">Account</div>
+                        <button class="mbaButton" onclick="event.preventDefault(); ProfileEdit()">Edit Profile</button>
+                        <button class="mbaButton" onclick="event.preventDefault(); ProfileLogout()">Logout</button>
                     </div>
+                </div>
 
-                    <div id="queryTableMainDiv" class="flexCol flexStart selfFlexGrow">
-                        <div id="tableTabs" class="flexRow flexStart flowEnd" style = "padding: 0px 10px; gap: 0px 10px;">
-                            <button id="fetchSessionsButton" class="mbaTab" onclick="FetchTable(this)" data-table-name="Sessions">Sessions</button>
-                            <button id="fetchUsersButton" class="mbaTab" onclick="FetchTable(this)" data-table-name="Users">Users</button>
-                            <button id="fetchTasksButton" class="mbaTab" onclick="FetchTable(this)" data-table-name="Tasks">Tasks</button>
-                            <button id="fetchActionsButton" class="mbaTab" onclick="FetchTable(this)" data-table-name="Actions">Actions</button>
-                            <button id="fetchCardsButton" class="mbaTab" onclick="FetchTable(this)" data-table-name="Cards">Cards</button>
-                            <button id="fetchTemplatesButton" class="mbaTab" onclick="FetchTable(this)" data-table-name="Templates">Templates</button>
-                            <button id="fetchUpdatesButton" class="mbaTab" onclick="FetchTable(this)" data-table-name="Updates">Updates</button>
-                            <button id="fetchGlobalsButton" class="mbaTab" onclick="FetchTable(this)" data-table-name="Globals">Globals</button>
-                        </div> <!-- tableTabs END -->
+                <div class="selfFlexGrow"></div>
 
-                        <div id="htmlTableContainerDiv" class="mbaBox mbaTableContainer flexCol flexStart crossStretch selfFlexGrow">
-                            <!--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE--TABLE HERE-->
+                <div id="currentSubscriptionsMainDiv" class="mbaBox flexCol flexStart crossStretch" style="width:95vw; height:33vh;">
+                    <div class = "flexRow flexEnd crossCenter" style="position:relative;">
+                        <div class = "selfFlexGrow flexCol flexCenter crossCenter">
+                            <div class = "mbaTitle" style="text-align:center;">My Subscriptions</div>
                         </div>
-                    </div> <!-- queryTableMainDiv END -->
-                </div> <!-- edittablesCenteredStrechDiv END -->
-            </div> <!-- editSpreadsheetsDiv END -->
-
-            <div id="liveViewMainDiv">
-                <div id="liveViewContainerDiv" class="mbaBox flexCol flexStart crossStretch pad10 gap10" style="width:95vw; min-height:33vh;">
-                    <div id="liveViewTitleDiv" class="mbaTitle" style="text-align: center;">Live Session View</div>
-                    <div id="liveViewLoginDiv" class="flexRow flexCenter crossCenter gap10">
-                        <label for="liveSessionNameInput" class="mbaInputLabel">Session:</label>
-                        <input id="liveSessionNameInput" name="liveSessionName" type="text" class="mbaInput">
-                        <label for="liveSessionPasswordInput" class="mbaInputLabel">Password:</label>
-                        <input id="liveSessionPasswordInput" name="liveSessionPassword" type="password" class="mbaInput">
-                        <button type="submit" class = "mbaButton selfCrossCenter" onclick="event.preventDefault(); GetLiveSessionLoginIDPost(this.form);">Login</button>
-                        <button type="button" class = "mbaButton selfCrossCenter" onclick="event.preventDefault(); RefreshLiveSession(this.form);">Refresh</button>
-                        <button type="button" class = "mbaButton selfCrossCenter" onclick="event.preventDefault(); SessionAdvanceDayPost(this.form);">Advance Day</button>
+                        <button class="mbaButton selfFlexEnd" style="position:absolute; right:5px;" onclick="event.preventDefault(); cicServerRPC_RefreshSubscriptions()">Refresh</button>
                     </div>
-                    <div id="liveSessionContainerDiv" class="flexRow flexStretch crossStretch selfFlexGrow" style="gap: 0px 25px;">
-                        <div id="liveSessionColumnsContainerDiv" class="flexRow flexStretch crossStretch selfFlexGrow pad5 gap10" style="overflow:auto;">
-                            <!--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE--TASKCOLS HERE-->
+                    <div id="currentSubscriptionsTableHolderDiv" class="selfFlexGrow selfCrossStretch flexCol flexStretch crossStretch" style="overflow:auto;">
+                        <!-- GRID OF SUBSCRIPTIONS HERE -->
+                        <div class="selfFlexGrow" style="order:999;"></div>
+                    </div>
+                </div> <!-- currentSubscriptionsMainDiv END -->
+
+                <div class="selfFlexGrow"></div>
+
+                <div id="availableSessionsMainDiv" class="mbaBox flexCol flexBetween crossStretch" style="width:95vw; height:33vh;">
+                    <div class = "flexRow flexEnd crossCenter" style="position:relative;">
+                        <div class = "selfFlexGrow flexCol flexCenter crossCenter">
+                            <div class = "mbaTitle" style="text-align:center;">Available Sessions</div>
                         </div>
-                        <div id="liveSessionUsersContainerDiv" class="mbaBox mbaTitle flexCol flexStart crossStretch margin5" style="text-align:center; width:10vw; overflow:auto;">Users
-                            <!--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE--USERS HERE-->
+                        <button class="mbaButton selfFlexEnd" style="position:absolute; right:5px;" onclick="event.preventDefault(); cicServerRPC_RefreshSessions()">Refresh</button>
+                    </div>
+                    <div id="availableSessionsTableHolderDiv" class="selfFlexGrow selfCrossStretch flexCol flexStart crossCenter" style="overflow:auto;">
+                        <!-- GRID OF SESSIONS HERE -->
+                        <div class="selfFlexGrow" style="order:999;"></div>
+                    </div>
+                </div> <!-- availableSessionsMainDiv END -->
+
+                <div class="selfFlexGrow"></div>
+            </div> <!-- SUBSCRIPTIONS_MainDiv END -->
+
+            <div id="LIVESESSION_MainDiv" class="selfFlexGrow flexCol flexCenter flowWrap pad5 gap10">
+
+                <div id="liveProfileMainDiv" class="mbaBox flexRow flexBetween crossStretch" style="width:95vw;">
+                    <div id= "liveProfileNameDiv" class = "mbaTitle" style="padding-left:10px; text-align:center;">Welcome!</div>
+                    <div class="flexRow flexBetween crossStretch gap10" style="padding-right:5px;">
+                        <div id="liveSessionNameDiv" class = "mbaTitle" style="text-align:center;">Live Session</div>
+                        <button class="mbaButton" onclick="event.preventDefault(); LiveSessionRefresh()">Refresh</button>
+                        <button class="mbaButton" onclick="event.preventDefault(); LiveSessionLogout()">Leave</button>
+                    </div>
+                </div>
+
+                <div id="liveSessionUsersMainDiv" class="mbaBox flexCol flexStart crossStretch" style="width:95vw; min-height:5vh;">
+                    <!-- <div class = "flexRow flexEnd crossCenter" style="position:relative;">
+                        <div class = "selfFlexGrow flexCol flexCenter crossCenter">
+                            <div class = "mbaTitle" style="text-align:center;">Users</div>
+                        </div>
+                    </div> -->
+                    <div id="liveSessionUsersListHolderDiv" class="selfFlexGrow selfCrossStretch flexCol flexStretch crossStretch" style="overflow:auto;">
+                        <!-- LIST OF USERS HERE -->
+                        <div class="selfFlexGrow" style="order:999;"></div>
+                    </div>
+                </div>
+                <!-- <div id="liveSessionsInfoMainDiv" class="mbaBox flexRow flexAround crossCenter flowWrap flowCenter pad5 gap5" style="width:95vw; min-height:5vh; overflow:auto;"> -->
+                <div id="liveSessionsInfoMainDiv" class="mbaBox flexRow flexAround crossCenter flowWrap gap5" style="width:95vw; min-height:5vh; overflow:auto;">
+                    <!-- <div id="instructionsContainerDiv" class="flexRow flexCenter crossCenter selfFlexNoShrink selfFlexGrow pad5"> -->
+                        <div id="blackInstructionsDiv" class="flexCol flexAround crossStart selfFlexNoShrink pad10" style="color:white;">
+                            <div class="selfFlexGrow"></div>
+                            <div class="flowNoWrap" style="display:block;"><b>Do <u>ONE</u> of the following:</b></div>
+                            <div class="flowNoWrap">-Advance an item you own</div>
+                            <div class="flowNoWrap">-Unblock an item you own</div>
+                            <div class="flowNoWrap">-Start a new item</div>
+                            <div class="flowNoWrap">*help others if you can't do any</div>
+                            <div class="selfFlexGrow"></div>
+                        </div>
+                        <div id="redInstructionsDiv" class="flexCol flexAround crossStart selfFlexNoShrink pad10" style="color:red; display:none;">
+                            <div class="selfFlexGrow"></div>
+                            <div class="flowNoWrap"><b>Do <u>BOTH</u> of the following:</b></div>
+                            <div class="flowNoWrap">-Block an item you own</div>
+                            <div class="flowNoWrap">-Start a new item</div>
+                            <div class="flowNoWrap">*help others if you can't start</div>
+                            <div class="selfFlexGrow"></div>
+                        </div>
+                    <!-- </div> -->
+                    <div id="eventContainerMainDiv" class="flexRow flexCenter crossStretch selfFlexGrow2 selfFlexShrink2 selfCrossStretch flowWrap pad5">
+                        <img id="eventImg" src="Images/beatles-abbeyroad.jpg" alt="" class="selfCrossCenter" style="height:max(10vw, 10vh); min-height:100px; margin: 0px 15px;">
+                        <div id="eventDetailsDiv" class="flexCol flexCenter crossCenter" style="margin: 0px 15px 0px 0px;">
+                            <div id="eventTitleDiv" class="mbaTitle " style="text-align:center;">Event</div>
+                            <div id="eventDetailsDiv" class="" style="text-align:center;">
+                                Event Description asd asd <br>
+                                as fasdfasdf asdf asd fasd fas fasd<br>
+                                asd fasdfasd asdfasd fasdfasdas fasdfasdfasd fasdfasdfasdf<br>
+                                yyyyyy
+                            </div>
+                        </div>
+                    </div>
+                    <div id="boardDetailsContainerMainDiv" class="flexRow flexCenter crossStretch flowWrap pad5">
+                        <div id="boardInfoDiv" class="flexCol flexCenter crossEnd selfFlexShrink" style="font-size:16px;">
+                            <div class="selfFlexGrow"></div>
+                            <div class="flowNoWrap">Items on board: <b>0</b></div>
+                            <div class="flowNoWrap">Items in progress: <b>0</b></div>
+                            <div class="flowNoWrap">Items blocked: <b>0</b></div>
+                            <div class="flowNoWrap">Items completed: <b>0</b></div>
+                            <div class="flowNoWrap">Blocked ratio: <b>0</b></div>
+                            <div class="flowNoWrap">Maximum age: <b>0</b></div>
+                            <div class="selfFlexGrow"></div>
+                        </div>
+                        <div id="sessionDayDiv" class="flexCol flexCenter crossCenter" style="position: relative;">
+                            <label id="sessionDayTitleDiv" for="sessionDayButton" class="mbaInputLabel" style="color:var(--mbaLogoGold); position:absolute; top:-4px; left:45px; font-size:20px; font-weight:bold; text-align:center; vertical-align:middle; z-index:100;">Day</label>
+                            <button id="sessionDayButton" class="mbaIcon mbaDayArrow" style="width:max(10vw,10vh); height:max(10vw, 10vh); min-height:100px; min-width:100px; margin:0px 5px 0px 30px; z-index:99;"  onclick="event.preventDefault(); cicServerRPC_AdvanceDay();"></button>
+                            <label id="sessionDayCountDiv" for="sessionDayButton" class="mbaInputLabel centerDiv" style="color:var(--mbaLogoGold); text-align:center; vertical-align:middle; font-size:50px; z-index:100;">0</label>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div id="liveSessionColumnsMainDiv" class="mbaBox selfFlexGrow flexCol flexStart crossStretch" style="width:95vw;">
+                    <div class = "flexRow flexEnd crossCenter" style="position:relative;">
+                        <div class = "selfFlexGrow flexCol flexCenter crossCenter">
+                            <div class = "mbaTitle" style="text-align:center;">Tasks</div>
+                        </div>
+                    </div>
+                    <div id="liveSessionColumnsContainerDiv" class="selfFlexGrow selfCrossStretch flexRow flexStretch crossStretch" style="overflow:auto;">
+                        <!-- SESSION COLUMNS AND TASKS HERE -->
+                    </div>
+                </div>
 
-            
-            
+            </div> <!-- LIVESESSION_MainDiv END -->
+
+            <div id="LOGINLIVESESSION_MainDiv" class="mbaBox flexCol flexAround crossStretch pad5 gap5" style="display:none; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);">
+                <div class="mbaTitle" style="text-align:center;">Join Live Session</div>
+                <form id="loginLiveSessionForm">
+                    <div class="flexRow flexBetween gap5">
+                        <label for="loginLiveSessionNameInput" class="mbaInputLabel">Session:</label>
+                        <input id="loginLiveSessionNameInput" name="sessionName" type="text" required class="mbaInput">
+                    </div>
+                    <div style="height:3px;"></div>
+                    <div class="flexRow flexBetween gap5">
+                        <label for="loginLiveSessionPasswordInput" class="mbaInputLabel">Password:</label>
+                        <input id="loginLiveSessionPasswordInput" name="sessionPassword" type="password" class="mbaInput">
+                    </div>
+                    <div class="flexRow flexEvenly">
+                        <button type="submit" class="mbaButton" style="min-width:60px;" onclick="event.preventDefault(); cicServerRPC_LoginLiveSession()">Join</button>
+                        <button class="mbaButton" style="min-width:60px;" onclick="event.preventDefault(); CancelLoginLiveSession()">Cancel</button>
+                    </div>
+                </form>
+            </div>
 
         </div> <!-- mainBodyDiv END -->
 
@@ -177,6 +216,10 @@
             <div id="responseDiv" class="cicResponse" style="visibility:hidden;"></div>
             <div id="footerTitleDiv" class="cicBannerTitle">© CIC Studios</div>
         </div>
-        <script src="sheets.js"></script>
+
+        <script src="App/cic_FPS_Events.js"></script>
+        <script src="App/cic_GAS_Connector.js"></script>
+        <script src="App/htmlCreator_Users.js"></script>
+        <script src="App/ui_Users.js"></script>
     </body>
 </html>
