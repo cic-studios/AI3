@@ -3,6 +3,11 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
     if(!dataTable)
         return null;
 
+    const editWidth = '50px';
+    const joinWidth = '50px';
+    const subscribeWidth = '100px';
+    const unsubscribeWidth = '100px';
+
     const rowCount = dataTable.rows.length + (showTitle?1:0);
     const colCount = dataTable.cols.length - skipCols.length + (editButtons?1:0) + (joinButtons?1:0) + (subscribeButtons?1:0) + (unsubscribeButtons?1:0);
     const colOffset = editButtons?1:0 + joinButtons?1:0;
@@ -13,6 +18,7 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
     htmlTableGrid.mainDiv.id = `${idPrefix}_htmlTableMainDiv`;
     htmlTableGrid.mainDiv.className = 'selfCrossStretch';
     htmlTableGrid.mainDiv.style.display = 'grid';
+    //htmlTableGrid.mainDiv.style.gridTemplateColumns = `repeat(${colCount}, min-content)`; //`${editButtons?'1fr ':''}repeat(${dataTable.cols.length}, 1fr)`;
     htmlTableGrid.mainDiv.style.gridTemplateColumns = `repeat(${colCount}, 1fr)`; //`${editButtons?'1fr ':''}repeat(${dataTable.cols.length}, 1fr)`;
     htmlTableGrid.mainDiv.style.gridTemplateRows = `repeat(${rowCount}, 1fr)`;
 
@@ -32,6 +38,7 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
     {
         htmlTableGrid.colDivs.push(document.createElement('div'));
         htmlTableGrid.colDivs[gridColIndex].id = `${idPrefix}_htmlTableEditDiv${gridColIndex}`;
+        htmlTableGrid.colDivs[gridColIndex].style.width = editWidth;
         htmlTableGrid.mainDiv.append(htmlTableGrid.colDivs[gridColIndex]);
         gridColIndex++;
     }
@@ -39,6 +46,7 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
     {
         htmlTableGrid.colDivs.push(document.createElement('div'));
         htmlTableGrid.colDivs[gridColIndex].id = `${idPrefix}_htmlTableJoinDiv${gridColIndex}`;
+        htmlTableGrid.colDivs[gridColIndex].style.width = joinWidth;
         htmlTableGrid.mainDiv.append(htmlTableGrid.colDivs[gridColIndex]);
         gridColIndex++;
     }
@@ -66,6 +74,7 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
     {
         htmlTableGrid.colDivs.push(document.createElement('div'));
         htmlTableGrid.colDivs[gridColIndex].id = `${idPrefix}_htmlTableSubscribeDiv${gridColIndex}`;
+        htmlTableGrid.colDivs[gridColIndex].style.width = subscribeWidth;
         htmlTableGrid.mainDiv.append(htmlTableGrid.colDivs[gridColIndex]);
         gridColIndex++;
     }
@@ -73,6 +82,7 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
     {
         htmlTableGrid.colDivs.push(document.createElement('div'));
         htmlTableGrid.colDivs[gridColIndex].id = `${idPrefix}_htmlTableUnsubscribeDiv${gridColIndex}`;
+        htmlTableGrid.colDivs[gridColIndex].style.width = unsubscribeWidth;
         htmlTableGrid.mainDiv.append(htmlTableGrid.colDivs[gridColIndex]);
         gridColIndex++;
     }
@@ -85,8 +95,9 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
         {
             newRow['editButton'] = document.createElement('button');
             newRow['editButton'].id = `${idPrefix}_htmlTableRow${rowIndex}:edit`;
+            newRow['editButton'].style.width = editWidth;
             newRow['editButton'].textContent = 'Edit';
-            newRow['editButton'].className = 'mbaButton';
+            newRow['editButton'].className = 'mbaButton selfCrossEnd';
             newRow['editButton'].style.textAlign = 'center';
             newRow['editButton'].style.verticalAlign = 'middle';
             newRow['editButton'].style.cursor = 'pointer';
@@ -98,8 +109,9 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
         {
             newRow['joinButton'] = document.createElement('button');
             newRow['joinButton'].id = `${idPrefix}_htmlTableRow${rowIndex}:join`;
+            newRow['joinButton'].style.width = joinWidth;
             newRow['joinButton'].textContent = 'Join';
-            newRow['joinButton'].className = 'mbaButton';
+            newRow['joinButton'].className = 'mbaButton selfCrossEnd';
             newRow['joinButton'].style.textAlign = 'center';
             newRow['joinButton'].style.verticalAlign = 'middle';
             newRow['joinButton'].style.cursor = 'pointer';
@@ -141,6 +153,7 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
         {
             newRow['subscribeButton'] = document.createElement('button');
             newRow['subscribeButton'].id = `${idPrefix}_htmlTableRow${rowIndex}:subscribe`;
+            newRow['subscribeButton'].style.width = subscribeWidth;
             newRow['subscribeButton'].textContent = 'Subscribe';
             newRow['subscribeButton'].className = 'mbaButton';
             newRow['subscribeButton'].style.textAlign = 'center';
@@ -155,12 +168,13 @@ function UserSessionTableToHtmlGrid(dataTable, outputDivContainer=null, idPrefix
         {
             newRow['unsubscribeButton'] = document.createElement('button');
             newRow['unsubscribeButton'].id = `${idPrefix}_htmlTableRow${rowIndex}:unsubscribe`;
+            newRow['unsubscribeButton'].style.width = unsubscribeWidth;
             newRow['unsubscribeButton'].textContent = 'Unsubscribe';
             newRow['unsubscribeButton'].className = 'mbaButton';
             newRow['unsubscribeButton'].style.textAlign = 'center';
             newRow['unsubscribeButton'].style.verticalAlign = 'middle';
             newRow['unsubscribeButton'].style.cursor = 'pointer';
-            newRow['unsubscribeButton'].addEventListener('click',()=>{cicServerRPC_UnsubscribeToSession(dataTable.rows[rowIndex][dataTable.cols[0]]);});
+            newRow['unsubscribeButton'].addEventListener('click',()=>{cicServerRPC_UnsubscribeFromSession(dataTable.rows[rowIndex][dataTable.cols[0]]);});
             /*newRow['unsubscribeButton'].style.width = '100%';
             newRow['unsubscribeButton'].style.height = '100%';*/
             htmlTableGrid.mainDiv.append(newRow['unsubscribeButton']);

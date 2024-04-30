@@ -59,11 +59,11 @@ function ProfileLogout()
     login_userData = null;
     document.getElementById('profileNameDiv').innerHTML = 'Welcome!';
     document.getElementById('profileAccountDiv').innerHTML = 'Account';
-    if(currentSubscriptionsTableHolderDiv && currentSubscriptionsGrid)
-        currentSubscriptionsTableHolderDiv.removeChild(currentSubscriptionsGrid);
+    if(currentSubscriptionsTableHolderDiv && currentSubscriptionsGrid && currentSubscriptionsGrid.mainDiv)
+        currentSubscriptionsTableHolderDiv.removeChild(currentSubscriptionsGrid.mainDiv);
     currentSubscriptionsGrid = null;
-    if(availableSessionsTableHolderDiv && availableSessionsGrid)
-        availableSessionsTableHolderDiv.removeChild(availableSessionsGrid);
+    if(availableSessionsTableHolderDiv && availableSessionsGrid && availableSessionsGrid.mainDiv)
+        availableSessionsTableHolderDiv.removeChild(availableSessionsGrid.mainDiv);
     availableSessionsGrid = null;
     document.getElementById('loginOldUserForm').reset();
     document.getElementById('loginNewUserForm').reset();
@@ -183,6 +183,7 @@ function cicClientRPC_RecieveSubscriptionConfirmation(resultData)
     else
         ShowResponse(resultData.response.msg, 5, 'green');
     cicServerRPC_RefreshSubscriptions();
+    cicServerRPC_RefreshSessions();
 }
 
 function cicServerRPC_UnsubscribeFromSession(sessionID)
@@ -202,32 +203,37 @@ function cicClientRPC_RecieveUnsubscriptionConfirmation(resultData)
     else
         ShowResponse(resultData.response.msg, 5, 'green');
     cicServerRPC_RefreshSubscriptions();
+    cicServerRPC_RefreshSessions();
 }
 
 function cicServerRPC_RefreshSubscriptions()
 {
-    const query =  `SELECT A,B,D,J WHERE F CONTAINS ":${login_userData[1]}:" AND D > "${new Date().toISOString()}" ORDER BY D ASC`;
+    //const query =  `SELECT A,B,D,J WHERE F CONTAINS ":${login_userData[1]}:" AND D > "${new Date().toISOString()}" ORDER BY D ASC`;
+    const query =  `SELECT A,B,D,J WHERE F CONTAINS ":${login_userData[1]}:" ORDER BY D ASC`;
     GoogleSheetQueryTableSQL(cicConnectorDB.gSpreadSheetID, 'Sessions', query, cicClientRPC_RecieveSubscriptions);
 }
 
 function cicClientRPC_RecieveSubscriptions(resultData)
 {
-    if(currentSubscriptionsGrid)
-        currentSubscriptionsGrid.remove();
+    if(currentSubscriptionsTableHolderDiv && currentSubscriptionsGrid && currentSubscriptionsGrid.mainDiv)
+        currentSubscriptionsTableHolderDiv.removeChild(currentSubscriptionsGrid.mainDiv);
     currentSubscriptionsGrid = UserSessionTableToHtmlGrid(resultData.response.data, currentSubscriptionsTableHolderDiv, 'Subscriptions', [0], false, true, -1, false, true, false, true);
 }
 
 function cicServerRPC_RefreshSessions()
 {
-    //const query =  `SELECT A,B,D,J WHERE D > "${new Date().toISOString()}" ORDER BY D ASC`;
     const query =  `SELECT A,B,D,J ORDER BY D ASC`;
+    //const query =  `SELECT A,B,D,J WHERE WHERE F NOT LIKE '%:${login_userData[1]}:%' AND D > "${new Date().toISOString()}" ORDER BY D ASC`;
+    //const query =  `SELECT A,B,D,J WHERE F NOT LIKE '%:${login_userData[1]}:%' ORDER BY D ASC`;
+    //const query =  `SELECT A,B,D,J WHERE CHARINDEX('$:${login_userData[1]}:', F, 0)<1 ORDER BY D ASC`;
+    //const query =  `SELECT A,B,D,J WHERE DOES NOT CONTAIN "%:${login_userData[1]}:%" ORDER BY D ASC`;
     GoogleSheetQueryTableSQL(cicConnectorDB.gSpreadSheetID, 'Sessions', query, cicClientRPC_RecieveSessions);
 }
 
 function cicClientRPC_RecieveSessions(resultData)
 {
-    if(availableSessionsGrid)
-        availableSessionsGrid.remove();
+    if(availableSessionsTableHolderDiv && availableSessionsGrid && availableSessionsGrid.mainDiv)
+        availableSessionsTableHolderDiv.removeChild(availableSessionsGrid.mainDiv);
     availableSessionsGrid = UserSessionTableToHtmlGrid(resultData.response.data, availableSessionsTableHolderDiv, 'Sessions', [0], false, true, -1, false, false, true, false);
 }
 

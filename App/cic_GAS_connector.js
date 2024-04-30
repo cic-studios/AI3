@@ -163,13 +163,15 @@ function GoogleSheetQueryTableSQL(spreadsheetID, sheetName, querySQL, responseCa
     .then(response => response.text())
     .then(responseText => 
     {
+        console.log(`GoogleSheetQueryTableSQL(spreadsheetID:${spreadsheetID}, sheetName:${sheetName}, querySQL:${querySQL}, responseCallback(callbackTempDataHolder:${callbackTempDataHolder})`);
+        console.log('responseText=>',responseText);
         const cutString = responseText.split('setResponse(');
         const sheetJsonObjs = JSON.parse(cutString[1].slice(0,-2));
         const jsTable = JsonSheetObjectsToJsTableObject(sheetJsonObjs, sheetName);
         if(callbackTempDataHolder)
             responseCallback({status: 'Ok', response:{msg:'Query successful!', data:jsTable, tempDataHolder:callbackTempDataHolder}, request:{url:url, spreadSheetID:spreadsheetID, sheetName:sheetName, querySQL:querySQL, responseCallback:responseCallback}});
         else
-        responseCallback({status: 'Ok', response:{msg:'Query successful!', data:jsTable}, request:{url:url, spreadSheetID:spreadsheetID, sheetName:sheetName, querySQL:querySQL, responseCallback:responseCallback}});
+            responseCallback({status: 'Ok', response:{msg:'Query successful!', data:jsTable}, request:{url:url, spreadSheetID:spreadsheetID, sheetName:sheetName, querySQL:querySQL, responseCallback:responseCallback}});
     })
     .catch(error => 
     {
@@ -177,7 +179,7 @@ function GoogleSheetQueryTableSQL(spreadsheetID, sheetName, querySQL, responseCa
         error.url = url;
         error.sheetTableName = sheetName;
         error.querySQL = querySQL;
-        console.log(error);
+        console.log('sqlqueryerror',error);
     });
 }
 

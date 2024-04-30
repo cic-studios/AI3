@@ -85,11 +85,11 @@ function CreateAutoTasksPost()
 
 function FetchTable(tabButton)
 {
-    GoogleSheetQueryTableSQL(cicConnectorDB.gSpreadSheetID, tabButton.dataset.tableName, 'Select *', cicClientRPC_RecieveTable);
+    GoogleSheetQueryTableSQL(cicConnectorDB.gSpreadSheetID, tabButton.dataset.tableName, 'Select *', cicClientRPC_RecieveTable, null);
 }
 function FetchTableFallback(resultData)
 {
-    //ToDo : REDO WITH NEW SYSTEM STANDARDS
+    //ToDo : REDO WITH NEW SYSTEM STANDARD OBJECT RETURNS
     const formData = new FormData();
     formData.append('sheetName', resultData.request.sheetName);
     GoogleAppsScriptPost(cicConnectorDB.gAppScriptID, 'FetchTable', formData, cicClientRPC_RecieveTable);
@@ -236,7 +236,7 @@ function cicClientRPC_DefaultRecieveAppsScriptResponse(resultData)
     ShowResponse(resultData.response.msg, 5);
 }
 
-TestLiveSessionUpdates();
+//TestLiveSessionUpdates();
 function TestLiveSessionUpdates()
 {
     const colsDataString = "Kitten,Cat:0,Puppy:2,Dog";
