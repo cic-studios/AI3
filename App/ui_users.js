@@ -19,7 +19,7 @@ let live_taskData=null;
 
 const enumPageState = Object.freeze({login:0, subscriptions:1, livesession:2});
 let currPage=null;
-SwapPageMainDiv(enumPageState.livesession);
+SwapPageMainDiv(enumPageState.login);
 function SwapPageMainDiv(pageState)
 {
     if(currPage==pageState) 
